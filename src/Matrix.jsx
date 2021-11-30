@@ -9,6 +9,12 @@ function Matrix() {
   const [matrixData, setMatrixData] = useState(generateMatrix());
   const [filteredData, setFilteredData] = useState(matrixData);
 
+  const hendleUpdateTable = () => {
+    const newMatrix = generateMatrix();
+    setMatrixData(newMatrix);
+    setFilteredData(newMatrix);
+  };
+
   const renderRow = (row) => {
     return row.map((number) => {
       if (number === null) {
@@ -55,10 +61,7 @@ function Matrix() {
 
   return (
     <>
-      <div
-        onClick={() => setMatrixData(generateMatrix())}
-        className="background header"
-      >
+      <div onClick={hendleUpdateTable} className="background header">
         <b>Draw table</b>
       </div>
       <table className="table">
